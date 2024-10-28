@@ -6,6 +6,7 @@ pipeline {
      IMAGE_REPO = "asrafbd"
      //ARGOCD_TOKEN = credentials('argocd-token')
      GITHUB_TOKEN = credentials('github-token1')
+     DOCKERHUB_CREDENTIALS=credentials('dockerhub')
      }
 
     stages {
@@ -23,12 +24,11 @@ pipeline {
 
         stage('Push Image') {
             steps {
-                withDockerRegistry(credentialsId: 'dockerhub', url: '') {
-                 
-                sh 'docker push ${IMAGE_REPO}/${NAME}:${VERSION}'
+                sh "echo '$DOCKERHUB_CREDENTIALS_PSW' | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin"
+               // sh 'docker push ${IMAGE_REPO}/${NAME}:${VERSION}'
+                sh 'docker logout'
             }
            }
-        }
     
         stage('Clone/Pull Repo') {
             steps {
