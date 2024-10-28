@@ -5,7 +5,7 @@ pipeline {
      VERSION = "${env.BUILD_ID}-${env.GIT_COMIT}"
      IMAGE_REPO = "asrafbd"
      ARGOCD_TOKEN = credentials{'argocd-token'}
-     GITHUB_TOKEN = credentials{'github-token'}
+     GITHUB_TOKEN = credentials{'github-token1'}
      }
 
     stages {
@@ -23,7 +23,7 @@ pipeline {
 
         stage('Push Image') {
             steps {
-                withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
+                withDockerRegistry([credentialsId: "dockerhub", url: ""]) {
                  
                 sh 'docker push ${IMAGE_REPO}/${NAME}:${VERSION}'
             }
