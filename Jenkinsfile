@@ -27,6 +27,7 @@ pipeline {
                 sh "echo '$DOCKERHUB_CREDENTIALS_PSW' | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin"
                // sh 'docker push ${IMAGE_REPO}/${NAME}:${VERSION}'
                 sh 'docker logout'
+                sh 'docker rmi ${IMAGE_REPO}/${NAME}:${VERSION}'
             }
            }
     
