@@ -53,7 +53,7 @@ pipeline {
             steps { 
                 dir("argocd-cicd/jenkins-demo") {
                 sh 'sed -i s#asrafbd/webapp.*#${IMAGE_REPO}/${NAME}:${VERSION}#g deployment.yaml'
-                sh 'cat deployment.yaml'
+                sh 'cat deployment.yaml | grep -i image -A 3'
             }
            }
           }
