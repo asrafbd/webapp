@@ -4,7 +4,7 @@ pipeline {
      NAME = "webapp"
      VERSION = "${env.BUILD_ID}-${env.GIT_COMIT}"
      IMAGE_REPO = "asrafbd"
-     ARGOCD_TOKEN = credentials('argocd-token')
+     //ARGOCD_TOKEN = credentials('argocd-token')
      GITHUB_TOKEN = credentials('github-token1')
      }
 
