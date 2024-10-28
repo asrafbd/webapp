@@ -63,7 +63,7 @@ pipeline {
             steps { 
                 dir("argocd-cicd/jenkins-demo") {
                 sh "git config --global user.email 'jekins@ci.com'"
-                sh 'git remote set-url origin https://github.com/asrafbd/argocd-cicd'
+                sh 'git remote set-url origin https://$GITHUB_TOKEN@github.com/asrafbd/argocd-cicd'
                 sh 'git checkout master'
                 sh 'git add -A'
                 sh 'git commit -am "updated image version for Build - $VERSION"'
