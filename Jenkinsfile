@@ -72,11 +72,10 @@ pipeline {
 
             }
            }
-            stage('Pull Request') {
-            steps { 
-            
-                sh 'bash pr.sh'
-            }
-           }
+            //stage('Pull Request') {
+            //steps { 
+            //    sh 'bash pr.sh'
+            //}
+           //}
         }
 }
